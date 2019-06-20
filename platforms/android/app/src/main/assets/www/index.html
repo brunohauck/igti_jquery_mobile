@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Contacts</title>
+    <!-- Disable phone number detection on iOS.  -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" type="text/css" media="all" />
+    <script src="js/libs/jquery-2.1.1.js"></script>
+    <link rel="stylesheet" href="css/app-style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/validator.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/intlTelInput-6.4.3.css">
+    <script src="js/namespace.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/formSetup.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/submissions.js"></script>
+    <script src="js/theming.js"></script>
+    <script src="js/libs/jquery.validate.js"></script>
+    <script src="js/libs/additional-methods.js"></script>
+    <script src="js/libs/intlTelInput-libPhoneNumber-7.2.1.js"></script>
+    <script src="js/libs/intlTelInput-6.4.3.js"></script>
+    <script src="js/libs/jquery.mobile-1.4.5.js"></script>
+
+</head>
+<body>
+
+    <!-- Esta é a lista principal. São apenas nomes. -->
+    <!-- Vale a pena notar que em um aplicativo jQuery Mobile, apenas a primeira "página" é carregada e exibida.
+          As seguintes páginas / outras serão parcialmente carregadas. Apenas seus "divs". -->
+    <div data-role="page" id="contacts-list-page" class="ui-page-theme-a" data-url="/contacts-jquerymobile/">
+        <div data-role="panel" id="contacts-list-page-menu-panel">
+            <ul data-role="listview" id="contacts-list-page-menu-panel-listview">
+                <li><a href="#contacts-add-page">Add Contact</a></li>
+                <li><a href="#contacts-detail-list-page">Detailed List</a></li>
+                <li><a href="#about-page">About</a></li>
+            </ul>
+        </div>
+        <div data-role="header" data-position="fixed" >
+            <a href="#contacts-list-page-menu-panel" id="contacts-list-page-menu-button" class="ui-btn ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-notext ui-mini ui-btn-inline">Menu</a>
+            <h1>Contacts</h1>
+            <a href="#contacts-detail-list-page" id="contacts-detail-list-page-button" class="ui-btn ui-corner-all ui-shadow ui-icon-arrow-d ui-btn-icon-right ui-mini ui-btn-inline">Details</a>
+        </div>
+        <div role="main" class="ui-content">
+            <form id="filter-form-list-page" class="ui-filterable">
+                <input id="filter-input-list-page" data-type="search">
+            </form>
+            <ul data-role="listview" id="contacts-display-listview" class="sortedList" data-autodividers="true" data-filter="true" data-input="#filter-input-list-page">
+                <!-- Lista de usuários será mostrada aqui  -->
+            </ul>
+        </div>
+        <div data-role="footer" >
+            <h4>Jquery CRUD App</h4>
+        </div>
+    </div>
+
+    <!-- Essa e lista detalhada.  -->
+    <div data-role="page" id="contacts-detail-list-page" class="ui-page-theme-a" >
+        <div data-role="panel" id="contacts-detail-list-page-menu-panel">
+            <ul data-role="listview" id="contacts-detail-list-page-menu-panel-listview">
+                <li><a href="#contacts-add-page">Add Contact</a></li>
+                <li><a href="#contacts-list-page">List view</a></li>
+                <li><a href="#about-page">About</a></li>
+            </ul>
+        </div>
+        <div data-role="header" data-position="fixed" >
+            <a href="#contacts-detail-list-page-menu-panel" id="contacts-detail-list-page-menu-button" class="ui-btn ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-notext ui-mini ui-btn-inline">Menu</a>
+            <h1>Contacts
+            </h1>
+            <a href="#contacts-list-page" id="contacts-list-page-button" class="ui-btn ui-corner-all ui-shadow ui-icon-arrow-d ui-btn-icon-right ui-mini ui-btn-inline">List</a>
+        </div>
+        <div role="main" class="ui-content">
+            <form id="filter-form-detail-list-page" class="ui-filterable">
+                <input id="filter-input-detail-list-page" data-type="search">
+            </form>
+            <ul data-role="listview" id="contacts-display-detail-listview" class="sortedList" data-autodividers="true" data-filter="true" data-input="#filter-input-detail-list-page">
+                <!-- A lista de usuários detalhada será carregada aqui  -->
+            </ul>
+        </div>
+        <div data-role="footer" >
+            <h4>Jquery CRUD App</h4>
+        </div>
+    </div>
+
+    <!-- página Info / About.. -->
+    <div data-role="page" id="about-page" class="ui-page-theme-a" >
+        <div data-role="panel" id="contacts-about-page-menu-panel">
+            <ul data-role="listview" id="contacts-about-page-menu-panel-listview">
+                <li><a href="#contacts-add-page">Add Contact</a></li>
+                <li><a href="#contacts-list-page">List view</a></li>
+                <li><a href="#about-page">About</a></li>
+            </ul>
+        </div>
+        <div data-role="header" data-position="fixed" >
+            <a href="#contacts-about-page-menu-panel" id="contacts-about-page-menu-button" class="ui-btn ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-notext ui-mini ui-btn-inline">Menu</a>
+            <h1>About</h1>
+        </div>
+        <div role="main" class="ui-content" >
+            <p>App Jquery Mobile</p>
+            <p>AFM Arquitetura de fronend para mobile jquery Mobile. Prof Bruno Hauck. Confira minhas redes sociais mais informações no site pessoal </p>
+            <ul>
+                <li><a href="http://www.mentorandroid.com">Mentor Android</a></li>
+                <li><a href="https://www.youtube.com/channel/UClJThqbUwg0RXrizVnf8GAA/featured">Youtube</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Um formulário em branco para adicionar um contato. -->
+    <div data-role="page" id="contacts-add-page" class="ui-page-theme-a" >
+        <div data-role="panel" id="contacts-add-page-menu-panel">
+            <ul data-role="listview" id="contacts-add-page-menu-panel-listview">
+                <li><a href="#contacts-list-page">List view</a></li>
+                <li><a href="#about-page">About</a></li>
+            </ul>
+        </div>
+        <div data-role="header" data-position="fixed" >
+            <a href="#contacts-add-page-menu-panel" id="contacts-add-page-menu-button" class="ui-btn ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-notext ui-mini ui-btn-inline">Menu</a>
+            <h1>Add Contact</h1>
+        </div>
+        <div role="main" class="ui-content">
+            <!--
+                Para capturar erros do lado do servidor, precisamos desativar a transição automática de página quando o formulário for
+                  submetido. Isso é feito adicionando data-ajax = "false" ao elemento do formulário. Então, mudamos manualmente a página
+                  na função que manipula o envio de formulários. Assim, permitindo-nos controlar quando o formulário muda para
+                  outra página.
+             -->
+            <form name="contacts-add-form" id="contacts-add-form" class="contact_info" method="post" data-ajax="false">
+                <div>
+                    <label for="contacts-add-input-firstName">Nome:</label>
+                    <input name="name" id="contacts-add-input-firstName" class="name" data-clear-btn="true" value="" placeholder="Enter a first name." type="text"/>
+                </div>
+                <div>
+                    <label for="contacts-add-input-lastName">Username:</label>
+                    <input name="username" id="contacts-add-input-username" class="name" data-clear-btn="true" value="" placeholder="Enter a last name." type="text"/>
+                </div>
+                <div>
+                    <label for="contacts-edit-input-tel">Phone:</label>
+                    <input name="phone" id="contacts-edit-input-tel"  data-clear-btn="true" value="" type="tel"/>
+                </div>
+                <div>,
+                    <label for="contacts-add-input-email">Email:</label>
+                    <input name="email" id="contacts-add-input-email" class="email" data-clear-btn="true" value="" placeholder="name@company.domain" type="email"/>
+                </div>
+                <div>
+                    <label for="contacts-add-input-password">Password:</label>
+                    <input name="password" id="contacts-add-input-password" class="password" data-clear-btn="true" value=""  type="password"/>
+                    <input name="img_url" id="contacts-add-input-password" value="https://cdn.icon-icons.com/icons2/1371/PNG/512/robot02_90810.png" type="hidden"/>
+                </div>    
+                <input id="submit-add-btn" data-inline="true" type="submit" value="Save" />
+                <input id="clear-add-btn" data-inline="true" type="reset" value="Clear"  />
+                <input id="cancel-add-btn" data-inline="true" type="reset" value="Cancel"  />
+            </form>
+        </div>
+        <div data-role="footer" data-position="fixed" >
+            <fieldset class="ui-grid-b">
+                <div class="ui-block-a">
+                    <a class="ui-btn ui-corner-all ui-shadow ui-btn-b block-button" onclick="$('#submit-add-btn').trigger('click');">Save</a>
+                </div>
+                <div class="ui-block-b">
+                    <a class="ui-btn ui-corner-all ui-shadow block-button" onclick="$('#clear-add-btn').trigger('click');">Clear</a>
+                </div>
+                <div class="ui-block-c">
+                    <a href="#contacts-list-page" class="ui-btn ui-corner-all ui-shadow block-button" onclick="$('#cancel-add-btn').trigger('click');">Cancel</a>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <!-- A pre-populated form for editing a contact -->
+    <div data-role="page" id="contacts-edit-page" class="ui-page-theme-a" >
+        <div data-role="panel" id="contacts-edit-page-menu-panel">
+            <ul data-role="listview" id="contacts-edit-page-menu-panel-listview">
+                <li><a href="#contacts-add-page">Add Contact</a></li>
+                <li><a href="#contacts-list-page">List view</a></li>
+                <li><a href="#about-page">About</a></li>              
+            </ul>
+        </div>
+        <div data-role="header" data-position="fixed" >
+            <a href="#contacts-edit-page-menu-panel" id="contacts-edit-page-menu-button" class="ui-btn ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-notext ui-mini ui-btn-inline">Menu</a>
+            <h1>Edit Contact</h1>
+            <a href="#contact-delete-dialog" id="contacts-delete-button" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-mini ui-btn-inline" data-rel="popup" data-position-to="window">Delete</a>
+        </div>
+        <div role="main" class="ui-content">
+            <!--
+                PUT e DELETE não são suportados em um formulário HTML, você deve usar POST.
+                  Consulte http://www.w3.org/TR/2010/WD-html5-diff-20101019/#changes-2010-06-24
+                Para capturar erros do lado do servidor, precisamos desativar a transição automática de página quando o formulário for
+                  submetido. Isso é feito adicionando data-ajax = "false" ao elemento do formulário. Então, mudamos manualmente a página
+                  na função que manipula o envio de formulários. Assim, permitindo-nos controlar quando o formulário muda para
+                  outra página.
+             -->
+            <form name="contacts-edit-form" id="contacts-edit-form" class="contact_info" method="post" data-ajax="false">
+                <div>
+                    <label for="contacts-edit-input-firstName">First Name:</label>
+                    <input name="name" id="contacts-edit-input-firstName" class="name" data-clear-btn="true" value="" placeholder="Enter a first name." type="text"/>
+                </div>
+                <div>
+                    <label for="contacts-edit-input-lastName">Username:</label>
+                    <input name="username" id="contacts-edit-input-lastName" class="name" data-clear-btn="true" value="" placeholder="Enter a last name." type="text"/>
+                </div>
+                <div>
+                    <label for="contacts-edit-input-tel">Phone:</label>
+                    <input name="phone" id="contacts-edit-input-tel"  data-clear-btn="true" value="" type="tel"/>
+                </div>
+                <div>
+                    <label for="contacts-edit-input-email">Email:</label>
+                    <input name="email" id="contacts-edit-input-email" class="email" data-clear-btn="true" value="" placeholder="name@company.domain" type="email"/>
+                </div>
+                <div>
+                    <label for="">Password:</label>
+                    <input name="password" id="contacts-add-input-password"   value="" type="password"/>
+                    <input name="img_url" id="contacts-add-input-password" value="https://cdn.icon-icons.com/icons2/1371/PNG/512/robot02_90810.png" type="hidden"/>
+                </div>   
+
+                <div>
+                    <input name="id" id="contacts-edit-input-id" value="" type="hidden"/>
+                </div>
+                <input id="submit-edit-btn" data-inline="true" type="submit" value="Save" />
+                <input id="reset-edit-btn" data-inline="true" type="reset" value="Reset"  />
+                <input id="cancel-edit-btn" data-inline="true" type="reset" value="Cancel"  />
+            </form>
+        </div>
+        <div data-role="footer" data-position="fixed" >
+            <fieldset class="ui-grid-b">
+                <!--Atualmente, há um bug no jQM 1.4.2. O CSS força todo o ui-btn em uma barra de ferramentas (cabeçalho ou rodapé) a ser
+                     definido para exibir: inline-block. Isso interfere na grade, fazendo com que os botões pareçam de tamanho normal.
+                     Para consertar isso, tivemos que substituir o estilo por uma classe 'block-button' referenciada em app.css.
+                     deve ser removido quando o bug for corrigido.-->
+                <div class="ui-block-a">
+                    <a class="ui-btn ui-corner-all ui-shadow ui-btn-b block-button" onclick="$('#submit-edit-btn').trigger('click');">Save</a>
+                </div>
+                <div class="ui-block-b">
+                    <a class="ui-btn ui-corner-all ui-shadow block-button" onclick="$('#reset-edit-btn').trigger('click');">Reset</a>
+                </div>
+                <div class="ui-block-c">
+                    <a href="#contacts-list-page" class="ui-btn ui-corner-all ui-shadow block-button" onclick="$('#cancel-edit-btn').trigger('click');">Cancel</a>
+                </div>
+            </fieldset>
+        </div>
+        <!-- Uma caixa de diálogo de confirmação de exclusão. -->
+        <div data-role="popup" id="contact-delete-dialog" data-overlay-theme="b">
+            <div data-role="header">
+                <h1>Delete Contact</h1>
+            </div>
+            <div role="main" class="ui-content">
+                <!-- 
+                    PUT e DELETE não são suportados em um formulário HTML. Consulte http://www.w3.org/TR/2010/WD-html5-diff-20101019/#changes-2010-06-24
+                     É por isso que estamos usando uma caixa de diálogo com simples Sim / Não. O ID do contato a ser excluído será programaticamente
+                     extraído do formulário Atualização.
+                -->
+                <h3>Are you sure you want to Delete?</h3>
+                <a href="#contacts-list-page" id="confirm-delete-button" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">Yes</a>
+                <a href="#contacts-list-page" id="cancel-delete-button" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">No</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
